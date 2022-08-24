@@ -12,7 +12,7 @@ function Register({ isLoggedIn }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch("http://localhost:3000/Register", {
+    fetch("https://sleepy-lowlands-47115.herokuapp.com/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

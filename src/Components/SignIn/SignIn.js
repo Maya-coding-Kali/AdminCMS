@@ -8,7 +8,7 @@ function SignIn({ isLoggedIn }) {
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch("http://localhost:3000/", {
+    fetch("https://sleepy-lowlands-47115.herokuapp.com/", {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       headers: {
         "Content-Type": "application/json",

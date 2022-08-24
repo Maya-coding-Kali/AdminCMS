@@ -29,7 +29,7 @@ function Post({ isLoggedIn }) {
     // } catch (err) {
     //   console.log(err);
     // }
-    fetch("http://localhost:3000/post", {
+    fetch("https://sleepy-lowlands-47115.herokuapp.com/post", {
       method: "Post",
       headers: {
         "Content-Type": "application/json",
