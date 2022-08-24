@@ -5,8 +5,7 @@
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
-import ImageUploading from "react-images-uploading";
-import axios from "axios";
+
 function Post({ isLoggedIn }) {
   const [title, setTitle] = useState();//
   const [date, setDate] = useState();
