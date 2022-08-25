@@ -9,7 +9,8 @@ function SignIn({ loggedIn }) {
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch("https://sleepy-lowlands-47115.herokuapp.com/", {//
+    fetch("https://sleepy-lowlands-47115.herokuapp.com/", {
+      //
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       headers: {
         "Content-Type": "application/json",
@@ -22,7 +23,7 @@ function SignIn({ loggedIn }) {
       .then((response) => response.json())
       .then((data) => {
         if (data) {
-          console.log(data)
+          console.log(data);
           loggedIn("post");
           navigate("/post");
         }
@@ -56,21 +57,22 @@ function SignIn({ loggedIn }) {
             }}
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
+        
         <Button variant="primary" type="submit">
           Submit
         </Button>
+      <div className="text-center" >
+        <button
+          style={{ "margin": "1em 0", "border":"none", "padding": "8px 1em ", "borderRadius": "1em", "background": ""}}
+          onClick={() => {
+            loggedIn("Register");
+            navigate("/Register");
+          }}
+        >
+          Register
+        </button>
+      </div>
       </Form>
-      <button
-        onClick={() => {
-          loggedIn("Register");
-          navigate("/Register");
-        }}
-      >
-        Register
-      </button>
     </div>
   );
 }

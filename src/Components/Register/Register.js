@@ -63,17 +63,22 @@ function Register({ loggedIn }) {
             placeholder="Password"
             onChange={(event) => setPassword}
           />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
+        </Form.Group>       
         <Button variant="primary" type="submit">
           Submit
         </Button>
       </Form>
       <h6 className="mt-3 text-center text-decoration-underline">
         {" "}
-        <a href="/"> Back to sign in</a>
+        <button
+          style={{ "margin": "1em 0", "border":"none", "padding": "8px 1em ", "borderRadius": "1em", "background": ""}}
+          onClick={() => {
+            loggedIn("/");
+            navigate("/");
+          }}
+        >
+        Sign In
+ </button>
       </h6>
     </div>
   );

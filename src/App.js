@@ -6,20 +6,15 @@ import Register from "./Components/Register/Register";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState("/");
-  useEffect(() => {console.log(isLoggedIn)});
+  
+  useEffect(() => {
+    console.log(isLoggedIn);
+  });
   const onloggedIn = (path) => {
     console.log(path);
     setIsLoggedIn(path);
   };
-  if (isLoggedIn === "/") {
-    return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<SignIn loggedIn={onloggedIn} />} />
-        </Routes>
-      </BrowserRouter>
-    );
-  } else if (isLoggedIn === "Register") {
+  if (isLoggedIn === "Register") {
     return (
       <BrowserRouter>
         <Routes>
@@ -35,6 +30,15 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/post" element={<Post loggedIn={onloggedIn} />} />
+        </Routes>
+      </BrowserRouter>
+    );
+  } else {
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route index path="/" element={<SignIn loggedIn={onloggedIn} />} />
+          <Route path="/" element={<SignIn loggedIn={onloggedIn} />} />
         </Routes>
       </BrowserRouter>
     );
