@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
-import SignIn from "./Components/SignIn/SignIn";
+import SignIn from "../SignIn/SignIn";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-import Post from "./Components/Post/Post";
-import Register from "./Components/Register/Register";
-
-function App() {
+import Post from "../Post/Post";
+import Register from "../Register/Register";
+function MyRoutes() {
   const [isLoggedIn, setIsLoggedIn] = useState("/");
-  useEffect(() => {console.log(isLoggedIn)});
+  useEffect(() => {});
   const onloggedIn = (path) => {
     console.log(path);
     setIsLoggedIn(path);
   };
-  if (isLoggedIn === "/") {
+  if (isLoggedIn) {
     return (
       <BrowserRouter>
         <Routes>
@@ -41,4 +40,4 @@ function App() {
   }
 }
 
-export default App;
+export default MyRoutes;

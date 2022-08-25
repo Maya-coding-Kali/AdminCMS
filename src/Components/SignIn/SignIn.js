@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { waitFor } from "@testing-library/react";
+import { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useNavigate } from "react-router-dom";
-function SignIn({ isLoggedIn }) {
+import { useNavigate, Routes, Route, Link, NavLink } from "react-router-dom";
+function SignIn({ loggedIn }) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  useEffect(() => {});
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -21,7 +23,7 @@ function SignIn({ isLoggedIn }) {
       .then((response) => response.json())
       .then((data) => {
         if (data) {
-          isLoggedIn("post");
+          loggedIn("post");
           navigate("/post");
         }
       })
@@ -61,13 +63,14 @@ function SignIn({ isLoggedIn }) {
           Submit
         </Button>
       </Form>
-      <h6 className="mt-3 text-center text-decoration-underline">
-        {" "}
-        <a href="/Register" className=" text-decoration-none" onChange={() =>{ isLoggedIn("Register")}} >
-          {" "}
-          Register
-        </a>
-      </h6>
+      <button
+        onClick={() => {
+          loggedIn("Register");
+          navigate("/Register");
+        }}
+      >
+        Register
+      </button>
     </div>
   );
 }

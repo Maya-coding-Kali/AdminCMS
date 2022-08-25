@@ -1,11 +1,11 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useNavigate  } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 //import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-function Register({ isLoggedIn }) {
-  const navigate  = useNavigate();
+function Register({ loggedIn }) {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,9 +26,11 @@ function Register({ isLoggedIn }) {
       .then((response) => response.json())
       .then((data) => {
         if (data) {
-          isLoggedIn("post")
-          console.log("it workded")
-          navigate("/post");
+          loggedIn("post");
+          console.log("it workded");
+          
+            navigate("/post");
+         
         }
       })
       .catch((error) => {
@@ -36,7 +38,6 @@ function Register({ isLoggedIn }) {
       });
   };
   return (
-    
     <div className="w-25 m-a mx-auto ">
       <h1 className="mt-3 text-center text-decoration-underline">Register</h1>
       <Form className="mt-5" onSubmit={handleSubmit}>
