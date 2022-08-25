@@ -12,7 +12,7 @@ function Register({ loggedIn }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch("https://sleepy-lowlands-47115.herokuapp.com/Register", {
+    fetch("https://sleepy-lowlands-47115.herokuapp.com/Register", { //
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -27,10 +27,8 @@ function Register({ loggedIn }) {
       .then((data) => {
         if (data) {
           loggedIn("post");
-          console.log("it workded");
-          
-            navigate("/post");
-         
+          console.log(data);
+          navigate("/post");
         }
       })
       .catch((error) => {

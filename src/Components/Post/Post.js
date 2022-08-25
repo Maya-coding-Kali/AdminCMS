@@ -7,14 +7,11 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 
 function Post({ isLoggedIn }) {
-  const [title, setTitle] = useState();//
+  const [title, setTitle] = useState(); //
   const [date, setDate] = useState();
   const [info, setInfo] = useState();
   const [image, setImage] = useState();
   const [imageName, setImageName] = useState();
-  const saveFile = (event) => {
-    
-  };
   const onSubmitHandle = async (event) => {
     event.preventDefault();
     // const formData = new FormData();
@@ -97,15 +94,14 @@ function Post({ isLoggedIn }) {
             accept="image/png, image/jpeg"
             onChange={(event) => {
               new Promise((resolve, reject) => {
-              const reader = new FileReader();
-              const file = event.target.files[0]
-              console.log(file)
-              reader.readAsDataURL(file);
-              reader.onload = () => resolve(setImage( reader.result));
-              reader.onerror = (error) => reject(error);
-              
-              
-            })}}
+                const reader = new FileReader();
+                const file = event.target.files[0];
+                console.log(file);
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(setImage(reader.result));
+                reader.onerror = (error) => reject(error);
+              });
+            }}
           />
         </Form.Group>
         <Button variant="primary" type="submit">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SignIn from "../SignIn/SignIn";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Post from "../Post/Post";
 import Register from "../Register/Register";
 function MyRoutes() {

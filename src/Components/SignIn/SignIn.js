@@ -1,16 +1,15 @@
-import { waitFor } from "@testing-library/react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useNavigate, Routes, Route, Link, NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function SignIn({ loggedIn }) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  useEffect(() => {});
+
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch("https://sleepy-lowlands-47115.herokuapp.com/", {
+    fetch("https://sleepy-lowlands-47115.herokuapp.com/", {//
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       headers: {
         "Content-Type": "application/json",
@@ -23,6 +22,7 @@ function SignIn({ loggedIn }) {
       .then((response) => response.json())
       .then((data) => {
         if (data) {
+          console.log(data)
           loggedIn("post");
           navigate("/post");
         }
