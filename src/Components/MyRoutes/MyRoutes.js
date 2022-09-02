@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from "react";
 import SignIn from "../SignIn/SignIn";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate, Redirect , Router  } from "react-router-dom";
 import Post from "../Post/Post";
 import Register from "../Register/Register";
+import TabControl from "../CMS-Tabs/TabControl";
 function MyRoutes() {
   const [isLoggedIn, setIsLoggedIn] = useState("/");
-  useEffect(() => {});
+
+  
   const onloggedIn = (path) => {
     console.log(path);
     setIsLoggedIn(path);
   };
-  if (isLoggedIn) {
-    return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<SignIn loggedIn={onloggedIn} />} />
-        </Routes>
-      </BrowserRouter>
-    );
-  } else if (isLoggedIn === "Register") {
+  useEffect(() => {
+    
+    setIsLoggedIn(JSON.parse(window.sessionStorage.getItem("isLoggedIn")));
+  }, []);
+
+  useEffect(() => {
+    console.log(isLoggedIn);
+    window.sessionStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
+  }, [isLoggedIn]);
+  if (isLoggedIn === "Register") {
     return (
       <BrowserRouter>
         <Routes>
@@ -33,7 +36,16 @@ function MyRoutes() {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/post" element={<Post loggedIn={onloggedIn} />} />
+          <Route path="/post" element={<TabControl loggedIn={onloggedIn} />} />
+        </Routes>
+      </BrowserRouter>
+    );
+  } else {
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route index path="/" element={<SignIn loggedIn={onloggedIn} />} />
+          <Route path="*" element={<SignIn loggedIn={onloggedIn} />} />
         </Routes>
       </BrowserRouter>
     );

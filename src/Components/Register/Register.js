@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
-
+import "./Register.css"
 //import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 function Register({ loggedIn }) {
   const navigate = useNavigate();
@@ -36,9 +36,9 @@ function Register({ loggedIn }) {
       });
   };
   return (
-    <div className="w-25 m-a mx-auto ">
+    <div className="w-25 m-a mx-auto myWidth ">
       <h1 className="mt-3 text-center text-decoration-underline">Register</h1>
-      <Form className="mt-5" onSubmit={handleSubmit}>
+      <Form className="mt-5 " onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicName">
           <Form.Label>Name</Form.Label>
           <Form.Control
